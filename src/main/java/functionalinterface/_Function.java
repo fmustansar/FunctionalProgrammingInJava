@@ -1,7 +1,9 @@
 package functionalinterface;
 
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.ToDoubleBiFunction;
 
 public class _Function {
     public static void main(String[] args) {
@@ -22,7 +24,7 @@ public class _Function {
         //FM: Example of BiFunctions
         int multiplyByX = multiplyByXFunction.apply(10,3);
         System.out.println(multiplyByX);
-
+        System.out.println(multiplyByXDoubleBiFunction.applyAsDouble(10,3));
 
     }
 
@@ -34,6 +36,7 @@ public class _Function {
     static Function<Integer, Integer> incrementByOneAndMultiplyBy10Function = incrementByOneFunction.andThen(multiplyByTenFunction);
     //BiFunction<T, U, R?
     static BiFunction<Integer, Integer, Integer> multiplyByXFunction = (number, multiplicationFactor) -> number * multiplicationFactor;
+    static ToDoubleBiFunction<Integer, Integer> multiplyByXDoubleBiFunction = (number, multiplicationFactor) -> number * multiplicationFactor;
 
 
 
