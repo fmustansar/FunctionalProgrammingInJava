@@ -1,5 +1,6 @@
 package functionalinterface;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class _Function {
@@ -17,15 +18,22 @@ public class _Function {
         int multiplyWithAndThen = incrementByOneAndMultiplyBy10Function.apply(1);
         System.out.println(multiplyWithAndThen);
 
+
+        //FM: Example of BiFunctions
+        int multiplyByX = multiplyByXFunction.apply(10,3);
+        System.out.println(multiplyByX);
+
+
     }
 
+    //Function<T,R>
     static Function<Integer, Integer> incrementByOneFunction =
             number -> number+=1;
-
     static Function<Integer, Integer> multiplyByTenFunction =
             number -> number*=10;
-
     static Function<Integer, Integer> incrementByOneAndMultiplyBy10Function = incrementByOneFunction.andThen(multiplyByTenFunction);
+    //BiFunction<T, U, R?
+    static BiFunction<Integer, Integer, Integer> multiplyByXFunction = (number, multiplicationFactor) -> number * multiplicationFactor;
 
 
 
