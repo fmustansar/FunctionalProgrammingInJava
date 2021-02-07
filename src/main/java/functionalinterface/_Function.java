@@ -14,6 +14,9 @@ public class _Function {
         int multiply = multiplyByTenFunction.apply(incrementByOneFunction.apply(1)); //20
         System.out.println(multiplyByTenFunction.apply(incrementByOneFunction.apply(1)));
 
+        int multiplyWithAndThen = incrementByOneAndMultiplyBy10Function.apply(1);
+        System.out.println(multiplyWithAndThen);
+
     }
 
     static Function<Integer, Integer> incrementByOneFunction =
@@ -21,6 +24,8 @@ public class _Function {
 
     static Function<Integer, Integer> multiplyByTenFunction =
             number -> number*=10;
+
+    static Function<Integer, Integer> incrementByOneAndMultiplyBy10Function = incrementByOneFunction.andThen(multiplyByTenFunction);
 
 
 
