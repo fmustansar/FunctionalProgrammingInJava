@@ -2,6 +2,7 @@ package declarative;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -20,9 +21,14 @@ public class Main {
          ******************************************************/
 
         //Declarative approach: using streams and collections
+
+        /* Using predicates.*/
+        // so the following predicate accepts Plant and returns true or false on the basis of the rightmost condition in the following statement.
+        Predicate<Plant> plantPredicate = plant -> PlantType.VEGETABLE.equals(plant.plantType);
+
         plants
                 .stream() //FM: Opens abstract mode where we can tell what we want
-                .filter(plant -> PlantType.VEGETABLE.equals(plant.plantType)) // filters on our condition
+                .filter(plantPredicate) // filters on our condition
                 .collect(Collectors.toList()) // collects the response in List, in our case
                 .forEach(System.out::println); // simply a loop
 
