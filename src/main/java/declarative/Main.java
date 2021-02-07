@@ -21,10 +21,10 @@ public class Main {
 
         //Declarative approach: using streams and collections
         plants
-                .stream()
-                .filter(plant -> PlantType.VEGETABLE.equals(plant.plantType))
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
+                .stream() //FM: Opens abstract mode where we can tell what we want
+                .filter(plant -> PlantType.VEGETABLE.equals(plant.plantType)) // filters on our condition
+                .collect(Collectors.toList()) // collects the response in List, in our case
+                .forEach(System.out::println); // simply a loop
 
         //FM: WOW
 
