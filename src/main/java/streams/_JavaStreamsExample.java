@@ -17,9 +17,16 @@ public class _JavaStreamsExample {
                 new Plant("Tomato", PlantType.VEGETABLE)
         );
 
-
+        //Problem is to get the distinct plant types from the plants list.
+        plants
+                .stream()//FM: Entring the abstract mode.
+                .map(getPlantType)//FM: mapping equation
+                .collect(Collectors.toList())//Converting to a list
+                .forEach(printPlantType);// Looping over it
     }
 
+    static Function<Plant, PlantType> getPlantType = plant-> plant.plantType;
+    static Consumer<PlantType> printPlantType = System.out::println;
 
     static class Plant {
         private final String name;
