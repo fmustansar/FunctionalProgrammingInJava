@@ -3,7 +3,7 @@ package functionalinterface;
 import java.util.Objects;
 import java.util.function.*;
 
-public class _Function {
+public class _FunctionExample {
     public static void main(String[] args) {
         int increment = increment(0);
         System.out.println(increment);

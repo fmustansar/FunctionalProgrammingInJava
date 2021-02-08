@@ -3,7 +3,7 @@ package functionalinterface;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class _Consumer {
+public class _ConsumerExample {
     public static void main(String[] args) {
         //FM: The non functional way, normal java function
         Customer faizan = new Customer("FAIZAN", "+49-312-4133770");
