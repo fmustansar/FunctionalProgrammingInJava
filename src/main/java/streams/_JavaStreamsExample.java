@@ -1,27 +1,25 @@
 package streams;
 
-import declarativeVsimperative.ImperativeMain;
-
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+
+import static streams._JavaStreamsExample.PlantType.*;
 
 public class _JavaStreamsExample {
     public static void main(String[] args) {
         List<Plant> plants = List.of(
-                new Plant("Brocoli", PlantType.VEGETABLE),
-                new Plant("Apple", PlantType.FRUIT),
-                new Plant("Banana", PlantType.FRUIT),
-                new Plant("Potato", PlantType.VEGETABLE),
-                new Plant("Tomato", PlantType.VEGETABLE)
+                new Plant("Brocoli", VEGETABLE),
+                new Plant("Apple", FRUIT),
+                new Plant("Banana", FRUIT),
+                new Plant("Potato", VEGETABLE),
+                new Plant("Tomato", VEGETABLE),
+                new Plant("Spinach", GREEN)
         );
 
         //Problem is to get the distinct plant types from the plants list.
         plants
                 .stream()//FM: Entring the abstract mode.
-                .map(plant-> plant.plantType)//FM: mapping equation
-                .collect(Collectors.toList())//Converting to a list
+                .map(plant-> plant.name)//FM: mapping condition - transformation
+                .mapToInt(String::length)//Converting to a list
                 .forEach(System.out::println);// Looping over it
     }
 
@@ -43,6 +41,6 @@ public class _JavaStreamsExample {
         }
     }
     enum PlantType {
-        FRUIT, VEGETABLE
+        FRUIT, VEGETABLE, GREEN
     }
 }
