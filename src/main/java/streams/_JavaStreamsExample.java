@@ -1,6 +1,9 @@
 package streams;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.IntConsumer;
+import java.util.function.ToIntFunction;
 
 import static streams._JavaStreamsExample.PlantType.*;
 
@@ -16,11 +19,14 @@ public class _JavaStreamsExample {
         );
 
         //Problem is to get the distinct plant types from the plants list.
+        Function<Plant, String> plantStringFunction = plant -> plant.name;
+        ToIntFunction<String> length = String::length;
+        IntConsumer println = System.out::println;
         plants
                 .stream()//FM: Entring the abstract mode.
-                .map(plant-> plant.name)//FM: mapping condition - transformation
-                .mapToInt(String::length)//Converting to a list
-                .forEach(System.out::println);// Looping over it
+                .map(plantStringFunction)//FM: mapping condition - transformation
+                .mapToInt(length)//Converting to a list
+                .forEach(println);// Looping over it
     }
 
     static class Plant {
