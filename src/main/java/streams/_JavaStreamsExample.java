@@ -30,8 +30,13 @@ public class _JavaStreamsExample {
         //FM: check if any plant is a Vegitable
         Boolean isAnyVegitable = plants.stream().anyMatch(p-> VEGETABLE.equals(p.plantType));
 
+        //FM: check if any plant is a Vegitable
+        Boolean isNoIdentifiedVegitable = plants.stream().noneMatch(p-> UNIDENTIFIED.equals(p.plantType));
+
+
         System.out.println("All the plants are of vegetable - "+ isAllVegies);
         System.out.println("Atleast one plant is a vegetable - "+ isAnyVegitable);
+        System.out.println("There is no instance of unidentified category - "+ isNoIdentifiedVegitable);
 
 
 
@@ -55,6 +60,6 @@ public class _JavaStreamsExample {
         }
     }
     enum PlantType {
-        FRUIT, VEGETABLE, GREEN
+        FRUIT, VEGETABLE, GREEN, UNIDENTIFIED
     }
 }
