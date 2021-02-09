@@ -1,9 +1,7 @@
 package streams;
 
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.IntConsumer;
-import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
 import static streams._JavaStreamsExample.PlantType.*;
 
@@ -18,15 +16,25 @@ public class _JavaStreamsExample {
                 new Plant("Spinach", GREEN)
         );
 
-        //Problem is to get the distinct plant types from the plants list.
-        Function<Plant, String> plantStringFunction = plant -> plant.name;
-        ToIntFunction<String> length = String::length;
-        IntConsumer println = System.out::println;
+//        //Problem is to get the distinct plant types from the plants list.
         plants
                 .stream()//FM: Entring the abstract mode.
-                .map(plantStringFunction)//FM: mapping condition - transformation
-                .mapToInt(length)//Converting to a list
-                .forEach(println);// Looping over it
+                .map(plant-> plant.name)//FM: mapping condition - transformation
+                .mapToInt(String::length)//Converting to a list
+                .forEach(System.out::println);// Looping over it
+
+        //FM: check if all plants are vegies
+        Boolean isAllVegies = plants.stream()
+                .allMatch(plant -> VEGETABLE.equals(plant.plantType)); //
+
+        //FM: check if any plant is a Vegitable
+        Boolean isAnyVegitable = plants.stream().anyMatch(p-> VEGETABLE.equals(p.plantType));
+
+        System.out.println("All the plants are of vegetable - "+ isAllVegies);
+        System.out.println("Atleast one plant is a vegetable - "+ isAnyVegitable);
+
+
+
     }
 
     static class Plant {
